@@ -5,11 +5,67 @@
 # MAIN
 
 # *************************************************
-# Install needed packages in personal library
+# Define Directory for sourcing modules
+dir_modules <- "/project/meissner_training/Anna/Bachelor/analysis"
 
+# Define results Directory
+dir_results <- "/project/meissner_training/Anna/Bachelor/analysis/results"
+
+# *************************************************
+# Load Functions
+
+# Load install function
+source(paste(dir_modules, "install_packages_module.r", sep = "/"))
+
+# Load the data loading function
+source(paste(dir_modules, "data_loading_module.r", sep = "/"))
+
+# Load frequencies function
+source(paste(dir_modules, "frequencies_module.r", sep = "/"))
+
+# Load length distribution function
+source(paste(dir_modules, "length_distribution_module.r", sep = "/"))
+
+# Load fraction of reads supporting per event function
+source(paste(dir_modules, "reads_module.r", sep = "/"))
+
+# Load circos plot function
+source(paste(dir_modules, "circos_module.r", sep = "/"))
+
+# Load gene annotation function
+source(paste(dir_modules, "gene_annotation_module.r", sep = "/"))
+
+# Load frequencies of locations function
+source(paste(dir_modules, "frequencies_of_locations_module.r", sep = "/"))
+
+# Load frequencies per location and sv type function
+source(paste(dir_modules, "frequencies_of_locations_per_sv_module.r", sep = "/"))
+
+# Load general GO Term function
+source(paste(dir_modules, "general_GO_term_module.r", sep = "/"))
+
+# Load the GO term enrichment analysis for SV types and locations function
+source(paste(dir_modules, "GO_per_sv_and_location_module.r", sep = "/"))
+
+# Load the heatmap function
+source(paste(dir_modules, "heatmap_module.r", sep = "/"))
+
+# *************************************************
+# Install needed packages in personal library
+#
+# This installs every needed package for the entire Framework in the specified r_lib directory.
+# 
+# Arguments:
+# - r_lib: directory path for installing packages
+#
+# Output:
+# - installed packages 
+
+# Define the Directory for installing packages 
 r_lib <- "/project/meissner_training/Anna/Bachelor/R_libs"
 
-source("install_packages.r")
+# Call the install function
+install_packages(r_lib)
 
 # *************************************************
 # Libraries
@@ -47,52 +103,6 @@ library(StructuralVariantAnnotation, lib = r_lib)
 
 # Load packages for heatmap
 library(ComplexHeatmap, lib = r_lib)
-
-
-# *************************************************
-# Define Directory for sourcing modules
-dir_modules <- "/project/meissner_training/Anna/Bachelor/analysis"
-
-# Define results Directory
-dir_results <- "/project/meissner_training/Anna/Bachelor/analysis/results"
-
-
-# *************************************************
-# Load Functions
-
-# Load the data loading function
-source(paste(dir_modules, "data_loading.r", sep = "/"))
-
-# Load frequencies function
-source(paste(dir_modules, "frequencies_module.r", sep = "/"))
-
-# Load length distribution function
-source(paste(dir_modules, "length_distribution_module.r", sep = "/"))
-
-# Load fraction of reads supporting per event function
-source(paste(dir_modules, "reads_module.r", sep = "/"))
-
-# Load circos plot function
-source(paste(dir_modules, "circos_module.r", sep = "/"))
-
-# Load gene annotation function
-source(paste(dir_modules, "gene_annotation_module.r", sep = "/"))
-
-# Load frequencies of locations function
-source(paste(dir_modules, "frequencies_of_locations_module.r", sep = "/"))
-
-# Load frequencies per location and sv type function
-source(paste(dir_modules, "frequencies_of_locations_per_sv_module.r", sep = "/"))
-
-# Load general GO Term function
-source(paste(dir_modules, "general_GO_term_module.r", sep = "/"))
-
-# Load the custom module for Gene Ontology (GO) term enrichment analysis for SV types and locations
-source(paste(dir_modules, "GO_per_sv_and_location_module.r", sep = "/"))
-
-# Load the heatmap function
-source(paste(dir_modules, "heatmap_module.r", sep = "/"))
-
 
 # *************************************************
 # load_data: Load data from VCF files
