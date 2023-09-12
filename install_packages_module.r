@@ -1,3 +1,6 @@
+# Author: Anna Gelbe
+# Date: 13.07.2023
+
 install_packages <- function(r_lib)
 
 {

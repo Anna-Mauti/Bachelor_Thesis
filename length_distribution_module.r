@@ -1,4 +1,6 @@
-#-----------------------------------------------------------------------------
+# Author: Anna Gelbe
+# Date: 13.07.2023
+
 ## LENGTH DISTRIBUTION
 
 length_distribution <- function(data_sets, all_data, dir_out, file_name, color_palette)

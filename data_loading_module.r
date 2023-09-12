@@ -1,5 +1,8 @@
+# Author: Anna Gelbe
+# Date: 13.07.2023
 
 load_data <- function(data_sets, dir_variations, support) {
+
     # Create an empty list to store the data frames
     data_list <- list()
     
@@ -19,7 +22,7 @@ load_data <- function(data_sets, dir_variations, support) {
         data <- filter(frame$dat, SUPPORT >= support)
         data$data <- data_sets[n]
         
-        # Store the data frame in the list
+        # Store the data frame in a list
         data_list[[n]] <- data
     }
     
@@ -28,3 +31,5 @@ load_data <- function(data_sets, dir_variations, support) {
     
     return(all_data)
 }
+
+

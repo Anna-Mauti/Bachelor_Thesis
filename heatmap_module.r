@@ -1,4 +1,5 @@
-
+# Author: Anna Gelbe
+# Date: 13.07.2023
 
 heatmap <- function(data_sets, allvar_df, svtypes, dir_out, file_name) {
         
@@ -28,7 +29,7 @@ filter_data <- allvar_df %>%
 
     # Generate and save the heatmap as a PDF file
     pdf(file = paste(dir_out[sv], file_name, sep = "/"))
-    plot <- Heatmap(matrix, name = paste(sv, " Heatmap", sep = ""),
+    plot <- Heatmap(matrix, name = paste(svtypes[sv], " Heatmap", sep = ""),
                     col = colorRamp2(c(0, 5), c("yellow", "red")),
                     na_col = "black",
                     row_names_side = "left",

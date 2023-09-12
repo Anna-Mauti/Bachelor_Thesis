@@ -1,4 +1,7 @@
-# ---------------------------------------------
+# Author: Anna Gelbe
+# Date: 13.07.2023
+
+
 # GO-TERM enrichment 
 # needs allvar_df to work 
 general_go_term <- function(data_sets, allvar_df, dir_out, file_name)

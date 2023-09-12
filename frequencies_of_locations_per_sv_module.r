@@ -1,4 +1,5 @@
-
+# Author: Anna Gelbe
+# Date: 13.07.2023
 
 
 # --------------
@@ -15,7 +16,6 @@ for (c in 1:length(data_sets))
 
 for (sv in svtypes)  {
 
-  
   # collect frequencies of sv in locations
   freq_loc <- c()
 
@@ -36,16 +36,15 @@ for (sv in svtypes)  {
   loc_df$location <- location
   loc_df$data <-data_sets[c] 
   loc_df$svtype <- sv 
+  loc_df$percent <- prop.table(loc_df$freq_loc)*100
 
   all_loc <- (rbind(all_loc, loc_df))
-
+  
   # search for maximum to get coord_cartesian
   temp_max <- append(temp_max, max(freq_loc))
   
-
 }
 }
-
 
 # for y axis scaling
 max <- max(temp_max)
@@ -54,11 +53,9 @@ maxi <- ceiling(max / 1000) * 1000
 
 for ( c in 1:length(data_sets))
 {
-
 # filter correct cell_line
 temp_loc <- all_loc %>% 
               filter(data == data_sets[c])
-
 
 # Create the dir_out[c] if it doesn't exist
 if (!dir.exists(dir_out[c])) {

@@ -1,54 +1,12 @@
-
+# Author: Anna Gelbe
+# Date: 13.07.2023
 
 
 # Visualization of results after variant calling with SVIM
 # MAIN
 
-# *************************************************
-# Define Directory for sourcing modules
-dir_modules <- "/project/meissner_training/Anna/Bachelor/analysis"
 
-# Define results Directory
-dir_results <- "/project/meissner_training/Anna/Bachelor/analysis/results"
 
-# *************************************************
-# Load Functions
-
-# Load install function
-source(paste(dir_modules, "install_packages_module.r", sep = "/"))
-
-# Load the data loading function
-source(paste(dir_modules, "data_loading_module.r", sep = "/"))
-
-# Load frequencies function
-source(paste(dir_modules, "frequencies_module.r", sep = "/"))
-
-# Load length distribution function
-source(paste(dir_modules, "length_distribution_module.r", sep = "/"))
-
-# Load fraction of reads supporting per event function
-source(paste(dir_modules, "reads_module.r", sep = "/"))
-
-# Load circos plot function
-source(paste(dir_modules, "circos_module.r", sep = "/"))
-
-# Load gene annotation function
-source(paste(dir_modules, "gene_annotation_module.r", sep = "/"))
-
-# Load frequencies of locations function
-source(paste(dir_modules, "frequencies_of_locations_module.r", sep = "/"))
-
-# Load frequencies per location and sv type function
-source(paste(dir_modules, "frequencies_of_locations_per_sv_module.r", sep = "/"))
-
-# Load general GO Term function
-source(paste(dir_modules, "general_GO_term_module.r", sep = "/"))
-
-# Load the GO term enrichment analysis for SV types and locations function
-source(paste(dir_modules, "GO_per_sv_and_location_module.r", sep = "/"))
-
-# Load the heatmap function
-source(paste(dir_modules, "heatmap_module.r", sep = "/"))
 
 # *************************************************
 # Install needed packages in personal library
@@ -59,13 +17,19 @@ source(paste(dir_modules, "heatmap_module.r", sep = "/"))
 # - r_lib: directory path for installing packages
 #
 # Output:
-# - installed packages 
+# - packages are installed
 
 # Define the Directory for installing packages 
 r_lib <- "/project/meissner_training/Anna/Bachelor/R_libs"
 
+# Load install function
+source(paste(dir_modules, "install_packages_module.r", sep = "/"))
+
 # Call the install function
 install_packages(r_lib)
+
+
+
 
 # *************************************************
 # Libraries
@@ -103,6 +67,55 @@ library(StructuralVariantAnnotation, lib = r_lib)
 
 # Load packages for heatmap
 library(ComplexHeatmap, lib = r_lib)
+
+# *************************************************
+# Definition of Global Variables
+
+# Define Directory for sourcing modules
+dir_modules <- "/project/meissner_training/Anna/Bachelor/analysis/Bachelor_Thesis"
+
+# Define results Directory
+dir_results <- "/project/meissner_training/Anna/Bachelor/analysis/results"
+
+# *************************************************
+# Load Functions
+
+
+# Load the data loading function
+source(paste(dir_modules, "data_loading_module.r", sep = "/"))
+
+# Load frequencies function
+source(paste(dir_modules, "frequencies_module.r", sep = "/"))
+
+# Load length distribution function
+source(paste(dir_modules, "length_distribution_module.r", sep = "/"))
+
+# Load fraction of reads supporting per event function
+source(paste(dir_modules, "normalized_cov_module.r", sep = "/"))
+
+# Load circos plot function
+source(paste(dir_modules, "circos_module.r", sep = "/"))
+
+# Load gene annotation function
+source(paste(dir_modules, "gene_annotation_module.r", sep = "/"))
+
+# Load frequencies of locations function
+source(paste(dir_modules, "frequencies_of_locations_module.r", sep = "/"))
+
+# Load frequencies per location and sv type function
+source(paste(dir_modules, "frequencies_of_locations_per_sv_module.r", sep = "/"))
+
+# Load general GO Term function
+source(paste(dir_modules, "general_GO_term_module.r", sep = "/"))
+
+# Load the GO term enrichment analysis for SV types and locations function
+source(paste(dir_modules, "GO_per_sv_and_location_module.r", sep = "/"))
+
+# Load the heatmap function
+source(paste(dir_modules, "heatmap_module.r", sep = "/"))
+
+
+
 
 # *************************************************
 # load_data: Load data from VCF files
@@ -245,6 +258,7 @@ length_distribution(data_sets, all_data, dir_out, file_name, color_palette)
 
 # *************************************************
 # Fraction of reads supporting per event
+# normalized_coverage
 # Arguments:
 #   - data_sets: Vector of data set names
 #   - all_data: Data frame containing the variant data
@@ -270,17 +284,17 @@ data_sets <- c('BL2', 'SUDHL5', 'DG75')
 dir_out <- c()
 for (n in 1:length(data_sets))
 {
-    dir_out[n] <- paste(dir_results, data_sets[n], "reads/", sep = "/")
+    dir_out[n] <- paste(dir_results, data_sets[n], "reads", sep = "/")
 }
 
 # Define the output file names
-file_name <- c("fraction_boxplot.pdf.pdf","fraction_with_chr_scatter.pdf","support_per_read_depth_scatter.pdf")
+file_name <- c("fraction_boxplot.pdf","fraction_with_chr_scatter.pdf","support_per_read_depth_scatter.pdf")
 
 # Color palette for SV types
 color_palette <- c('BND' = "#ff91ed", 'DEL' = "#81ebe4", 'DUP:INT' = "#ffc738", 'DUP:TANDEM' = "#b4fa82", 'INS' = "#fa7f7f", 'INV' = "#c18ff7")
 
-# Call the supporting reads function
-supporting_reads(data_sets, all_data, dir_out, file_name, color_palette)
+# Call the normalized coverage function
+normalized_coverage(data_sets, all_data, dir_out, file_name, color_palette)
 
 
 

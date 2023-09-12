@@ -1,3 +1,6 @@
+# Author: Anna Gelbe
+# Date: 13.07.2023
+
 # CIRCOS PLOT
 circos <- function(data_sets, all_data, dir_out, file_name, color_palette){
 
@@ -49,6 +52,9 @@ for (c in 1:length(data_sets))
 
     # save in one tibble
     translocations <- tibble(chrA, startA, endA, chrB, startB, endB)
+    print(paste(data_sets[c],nrow(translocations)))
+    print(paste(data_sets[c],nrow(del_value)))
+    print(paste(data_sets[c],nrow(ins_value)))
 
     # PLOT
 

@@ -1,3 +1,6 @@
+# Author: Anna Gelbe
+# Date: 13.07.2023
+
 # GO Term enrichment 
 go_per_sv_and_location <- function(data_sets, allvar_df, svtypes, split_locations, location, dir_out, file_name) {
 

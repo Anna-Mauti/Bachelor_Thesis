@@ -1,4 +1,5 @@
-##---------------------------------------------------------------------------
+# Author: Anna Gelbe
+# Date: 13.07.2023
 
 # Frequencies of locations
 # for locating variants 
